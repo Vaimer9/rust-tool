@@ -1,3 +1,7 @@
+mod stuff;
+use stuff::functions::{figlet, clear_screen, input};
 fn main() {
-    println!("Hello, world!");
+    clear_screen();
+    figlet("Tool");
+    let theinput = input();
 }
