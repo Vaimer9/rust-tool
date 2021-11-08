@@ -19,9 +19,10 @@ pub fn clear_screen() {
     }
  }
 
-pub fn input() {
+pub fn input() -> String {
     let mut input = String::new();
-    print!("Enter Your Option: ");
+    print!(" Enter Your Option: ");
     let _ = io::stdout().flush();
     io::stdin().read_line(&mut input).expect("Could Not Read Input");
+    return input;
 }
