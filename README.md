@@ -1,4 +1,4 @@
-# Rust Tool
+# NightRaven Tool
 
 Hi this a rust tool i made for my first rust project it's is basically a command line tool. There will be an OS info part on this and much more too it.
 
