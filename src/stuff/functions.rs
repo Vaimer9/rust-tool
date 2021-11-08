@@ -2,6 +2,8 @@ use figlet_rs::FIGfont;
 use std::env;
 use std::process::Command;
 use std::io::{self, Write};
+use std::{thread, time};
+use std::process;
 
 pub fn figlet(word: &str) {
     let font = FIGfont::standand().unwrap();
@@ -25,4 +27,11 @@ pub fn input() -> String {
     let _ = io::stdout().flush();
     io::stdin().read_line(&mut input).expect("Could Not Read Input");
     return input;
+}
+
+pub fn exit() {
+    println!("\n Goodbye we hope you enjoyed our program");
+    let time_sleep_quit = time::Duration::from_millis(2000);
+    thread::sleep(time_sleep_quit);
+    process::exit(0x100);
 }
