@@ -9,7 +9,7 @@ fn main() {
         println!(" 1. System Info");
         println!(" 2. Discord");
         println!(" 3. Quit \n");
-        let theinput = input();
+        let theinput = input("Enter your option: ");
         match theinput.as_str().trim() {
             "1" => {
                 sysinfo();

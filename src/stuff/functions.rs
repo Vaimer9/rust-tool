@@ -21,9 +21,9 @@ pub fn clear_screen() {
     }
 }
 
-pub fn input() -> String {
+pub fn input(word: &str) -> String {
     let mut input = String::new();
-    print!(" Enter Your Option: ");
+    print!(" {}",word);
     let _ = io::stdout().flush();
     io::stdin()
         .read_line(&mut input)

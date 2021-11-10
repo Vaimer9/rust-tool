@@ -18,7 +18,7 @@ pub fn sysinfo() {
         println!(" Number Of Processors: {:?} \n", sys.processors().len());
         println!(" 1. Go Back");
         println!(" 2. Quit \n");
-        let inputsysinfo = input();
+        let inputsysinfo = input("Enter your option: ");
 
         match inputsysinfo.as_str().trim() {
             "1" => {
@@ -29,7 +29,7 @@ pub fn sysinfo() {
             }
             _ => {
                 println!("\n Option not available");
-                sleep_ms(2000)
+                sleep_ms(2000);
             }
         }
     }
