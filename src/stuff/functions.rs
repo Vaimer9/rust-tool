@@ -3,6 +3,7 @@ use std::env;
 use std::io::{self, Write};
 use std::process;
 use std::process::Command;
+use std::num::ParseIntError;
 use std::{thread, time};
 
 pub fn figlet(word: &str) {
@@ -30,6 +31,22 @@ pub fn input(word: &str) -> String {
         .expect("Could Not Read Input");
     return input;
 }
+
+pub fn input_int(word: &str) -> Result<u32, ParseIntError> {
+    let mut input = String::new();
+    print!(" {}", word);
+    let _ = io::stdout().flush();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Could Not Read Input");
+    let trimmed = input.trim();
+    match trimmed.parse::<u32>() {
+        Ok(n) => {},
+        Err(..) => {println!(" This is not a number please try again")};
+    };
+    return input
+}
+
 
 pub fn exit() {
     println!("\n Goodbye we hope you enjoyed our program");
