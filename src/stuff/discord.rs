@@ -1,7 +1,10 @@
 use super::functions::{clear_screen, exit, figlet, input, sleep_ms, input_int};
 use rand::distributions::DistString;
-use rand::{Rng, thread_rng};
+use rand::{thread_rng};
 use rand::distributions::Alphanumeric;
+use std::fs::{File};
+use std::io::Write;
+use curl::easy::Easy;
 
 pub fn discord() {
     loop {
@@ -38,11 +41,18 @@ pub fn nitro() {
         clear_screen();
         figlet("Nitro");
         let nitrocodes = input_int("How much nitro codes do you want: ");
-        // for _ in nitrocodes.iter() {
-        //     let mut rng = thread_rng();
-        //     let chars: String = Alphanumeric.sample_string(&mut rng, 19);
-        //     println!(" https://discord.gift/{}",chars);
-        // }
-        let theinput = input("Enter your option: ");
+        let mut file = File::create("nitro_codes.txt").expect("Couldn't create file");
+        let mut easy = Easy::new();
+        for _ in 0..nitrocodes {
+           let mut rng = thread_rng();
+           let mut thecode: String = Alphanumeric.sample_string(&mut rng, 19);
+           let urlcode = format!("https://discord.gift/{}",thecode); 
+           let checker = format!("https://discordapp.com/api/v9/entitlements/gift-codes/{}?with_application=false&with_subscription_plan=true",thecode);
+           easy.url(&thecode).unwrap();
+           println!(" {}",urlcode);
+           let write_code = format!("{}\n",urlcode);
+           file.write(write_code.as_bytes()).expect("Cannot write to file");
+        }
+        let _theinput = input("Enter your option: ");
     }
 }
