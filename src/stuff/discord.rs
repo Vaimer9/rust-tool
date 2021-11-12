@@ -48,7 +48,7 @@ pub fn nitro() {
            let mut thecode: String = Alphanumeric.sample_string(&mut rng, 19);
            let urlcode = format!("https://discord.gift/{}",thecode); 
            let checker = format!("https://discordapp.com/api/v9/entitlements/gift-codes/{}?with_application=false&with_subscription_plan=true",thecode);
-           easy.url("{}",thecode).unwrap();
+           easy.url(format!("{}", checker).as_str()).unwrap();
            println!(" {}",urlcode);
            let write_code = format!("{}\n",urlcode);
            file.write(write_code.as_bytes()).expect("Cannot write to file");
