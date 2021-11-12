@@ -14,12 +14,11 @@ pub fn figlet(word: &str) {
 }
 
 pub fn clear_screen() {
-    let os = env::consts::OS;
-    if os == "macos" {
-        Command::new("clear").status().unwrap();
-    } else if os == "windows" {
-        Command::new("cls").status().unwrap();
-    }
+    if cfg!(windows) {
+        println!("this is windows");
+    } else if cfg!(unix) {
+        println!("this is unix alike");
+    }    
 }
 
 pub fn input(word: &str) -> String {
