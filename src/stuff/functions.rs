@@ -1,5 +1,4 @@
 use figlet_rs::FIGfont;
-use std::env;
 use std::io::{self, Write};
 use std::process;
 use std::process::Command;

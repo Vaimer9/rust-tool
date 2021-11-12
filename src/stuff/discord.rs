@@ -47,7 +47,7 @@ pub async fn nitro() {
         for _ in 0..nitrocodes {
             sleep_ms(6000);
             let mut rng = thread_rng();
-            let mut thecode: String = Alphanumeric.sample_string(&mut rng, 19); // to generate uppercase, lowercase and numbers till 19 charecters
+            let thecode: String = Alphanumeric.sample_string(&mut rng, 19); // to generate uppercase, lowercase and numbers till 19 charecters
             let urlcode = format!("https://discord.gift/{}", thecode);
             let checker = format!("https://discordapp.com/api/v9/entitlements/gift-codes/{}?with_application=false&with_subscription_plan=true",thecode);
             let result = reqwest::get(checker).await;
