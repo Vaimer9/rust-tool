@@ -3,7 +3,6 @@ use std::env;
 use std::io::{self, Write};
 use std::process;
 use std::process::Command;
-
 use std::{thread, time};
 
 pub fn figlet(word: &str) {
@@ -15,23 +14,21 @@ pub fn figlet(word: &str) {
 
 pub fn clear_screen() {
     if cfg!(windows) {
-        println!("this is windows");
+        Command::new("cls").status().unwrap();
     } else if cfg!(unix) {
-        println!("this is unix alike");
-    }    
+        Command::new("clear").status().unwrap();
+    }
 }
 
 pub fn input(word: &str) -> String {
     let mut input = String::new();
-    print!(" {}",word);
+    print!(" {}", word);
     let _ = io::stdout().flush();
     io::stdin()
         .read_line(&mut input)
         .expect("Could Not Read Input");
     return input;
 }
-
-
 
 pub fn input_int(prompt: &str) -> usize {
     let mut input = String::new();

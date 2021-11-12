@@ -1,7 +1,7 @@
 mod stuff;
+use stuff::discord::discord;
 use stuff::functions::{clear_screen, exit, figlet, input, sleep_ms};
 use stuff::sysinfo::sysinfo;
-use stuff::discord::discord;
 fn main() {
     loop {
         clear_screen();
